@@ -1,7 +1,7 @@
 const sketchContainer = document.querySelector("#sketch-container");
-// Change function so parameter is width and number of 
-// pixels is width squared
-function fillSquare(pixels) {
+
+function fillSquare(length) {
+    let pixels = length ** 2;
     let pixArray = [];
     for (let i = 0; i < pixels; i++) {
         pixArray[i] = document.createElement("div");
@@ -10,10 +10,4 @@ function fillSquare(pixels) {
     }
     }
 
-fillSquare(256);
-
-
-
-
-// [i].classList.add("pixel");
-// sketchContainer.appendChild([i]);
+fillSquare(8);
