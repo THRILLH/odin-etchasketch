@@ -9,14 +9,17 @@ body {
   height: 600px;
   width: 600px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 
-.pixel {
+.pixel, .pixel-row {
     background-color: black;
     border: 1px solid white;
     flex: 1;
-    flex-basis: 35px;
 
+}
+
+.pixel-row {
+    display: flex;
 }

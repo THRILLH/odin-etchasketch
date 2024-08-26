@@ -1,12 +1,19 @@
 const sketchContainer = document.querySelector("#sketch-container");
 
+
 function fillSquare(length) {
-    let pixels = length ** 2;
-    let pixArray = [];
-    for (let i = 0; i < pixels; i++) {
-        pixArray[i] = document.createElement("div");
-        pixArray[i].classList.add("pixel");
-        sketchContainer.appendChild(pixArray[i]);
+    let rowArray = [];
+    for (let i = 0; i < length; i++) {
+        rowArray[i] = document.createElement("div");
+        rowArray[i].classList.add("pixel-row");
+        sketchContainer.appendChild(rowArray[i]);
+
+        let pixArray = [];
+        for (let j = 0; j < length; j++) {
+            pixArray[j] = document.createElement("div");
+            pixArray[j].classList.add("pixel");
+            rowArray[i].appendChild(pixArray[j]);
+        }
     }
     }
 
