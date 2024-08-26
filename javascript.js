@@ -17,4 +17,13 @@ function fillSquare(length) {
     }
     }
 
-fillSquare(8);
+fillSquare(16);
+
+const pixels = document.querySelectorAll(".pixel");
+pixels.forEach( (pixel) => {
+    pixel.addEventListener("mouseover", () => {
+        pixel.setAttribute("style", "background: white");
+    });
+    
+}
+);
