@@ -1,0 +1,1 @@
+This is an Etch-a-Sketch project created as part of The Odin Project. It is designed to help me practise my javascript and css skills.
