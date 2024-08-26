@@ -1,0 +1,22 @@
+body {
+    background-color: aqua;
+    display: flex;
+}
+
+#sketch-container {
+    background: peachpuff;
+  border: 4px solid brown;
+  height: 600px;
+  width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.pixel {
+    background-color: black;
+    border: 1px solid white;
+    flex: 1;
+    flex-basis: 35px;
+
+}
