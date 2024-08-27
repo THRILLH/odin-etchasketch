@@ -1,5 +1,22 @@
 const sketchContainer = document.querySelector("#sketch-container");
 
+    let opac = 1;
+function reduceOpacity() {
+    opac -= 0.1;
+}
+
+function darkenPixels() {
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach( (pixel) => {
+        pixel.addEventListener("mouseover", () => {
+            if (!pixel.style.opacity) pixel.style.opacity = '1';
+            opacity = parseFloat(pixel.style.opacity);
+            pixel.style.opacity = opacity - 0.2;
+        });
+    }
+    );
+}
+
 function blackPixels() {
     const pixels = document.querySelectorAll(".pixel");
     pixels.forEach( (pixel) => {
@@ -35,7 +52,7 @@ function fillSquare(length) {
             rowArray[i].appendChild(pixArray[j]);
         }
     }
-    blackPixels();
+    darkenPixels();
     }
     
 
