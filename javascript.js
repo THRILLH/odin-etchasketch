@@ -1,5 +1,14 @@
 const sketchContainer = document.querySelector("#sketch-container");
 
+function blackPixels() {
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach( (pixel) => {
+        pixel.addEventListener("mouseover", () => {
+            pixel.setAttribute("style", "background: black");
+        });
+    }
+    );
+}
 
 function fillSquare(length) {
     sketchContainer.innerHTML = '';
@@ -16,16 +25,8 @@ function fillSquare(length) {
             rowArray[i].appendChild(pixArray[j]);
         }
     }
-    const pixels = document.querySelectorAll(".pixel");
-    pixels.forEach( (pixel) => {
-        pixel.addEventListener("mouseover", () => {
-            pixel.setAttribute("style", "background: black");
-        });
+    blackPixels();
     }
-    );
-    }
-
-
 
 const slider = document.querySelector("#myRange");
 let output = document.querySelector("#demo");
@@ -37,5 +38,3 @@ slider.oninput = function () {
 }
 
 fillSquare(slider.value);
-
-
