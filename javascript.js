@@ -4,7 +4,17 @@ function blackPixels() {
     const pixels = document.querySelectorAll(".pixel");
     pixels.forEach( (pixel) => {
         pixel.addEventListener("mouseover", () => {
-            pixel.setAttribute("style", `background: #` + ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6));
+            pixel.setAttribute("style", "background: black");
+        });
+    }
+    );
+}
+
+function colorPixels() {
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach( (pixel) => {
+        pixel.addEventListener("mouseover", () => {
+            pixel.setAttribute("style", "background: #" + ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6));
         });
     }
     );
@@ -27,6 +37,7 @@ function fillSquare(length) {
     }
     blackPixels();
     }
+    
 
 const slider = document.querySelector("#myRange");
 let output = document.querySelector("#demo");
@@ -38,3 +49,13 @@ slider.oninput = function () {
 }
 
 fillSquare(slider.value);
+
+const blackBtn = document.querySelector("#black-btn");
+blackBtn.addEventListener("click", () => {
+    blackPixels();
+})
+
+const colorBtn = document.querySelector("#color-btn");
+colorBtn.addEventListener("click", () => {
+    colorPixels();
+})
