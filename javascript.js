@@ -3,8 +3,9 @@ const sketchContainer = document.querySelector("#sketch-container");
 function blackPixels() {
     const pixels = document.querySelectorAll(".pixel");
     pixels.forEach( (pixel) => {
+        let randomHex = Math.floor(Math.random() * 16777216);
         pixel.addEventListener("mouseover", () => {
-            pixel.setAttribute("style", "background: black");
+            pixel.setAttribute("style", `background: #` + randomHex);
         });
     }
     );
