@@ -1,16 +1,13 @@
 const sketchContainer = document.querySelector("#sketch-container");
 
-
-
 function darkenPixels() {
     const pixels = document.querySelectorAll(".pixel");
     pixels.forEach( (pixel) => {
-        pixel.removeEventListener("mouseover", blackPixelHandler); // Remove previous event listeners
+        pixel.removeEventListener("mouseover", blackPixelHandler);
         pixel.removeEventListener("mouseover", colorPixelHandler);
-        pixel.removeEventListener("mouseover", darkenPixelHandler); // Ensure only one type of handler is active
+        pixel.removeEventListener("mouseover", darkenPixelHandler);
         pixel.addEventListener("mouseover", darkenPixelHandler);
-    }
-    );
+    });
 }
 
 function darkenPixelHandler(event) {
@@ -42,8 +39,7 @@ function colorPixels() {
         pixel.removeEventListener("mouseover", darkenPixelHandler);
         pixel.removeEventListener("mouseover", colorPixelHandler);
         pixel.addEventListener("mouseover", colorPixelHandler);
-    }
-    );
+    });
 }
 
 function colorPixelHandler(event) {
@@ -66,10 +62,9 @@ function fillSquare(length) {
             rowArray[i].appendChild(pixArray[j]);
         }
     }
-    darkenPixels();
+    blackPixels();
     }
     
-
 const slider = document.querySelector("#myRange");
 let output = document.querySelector("#demo");
 output.innerHTML = slider.value;
