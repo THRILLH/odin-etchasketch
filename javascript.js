@@ -1,40 +1,54 @@
 const sketchContainer = document.querySelector("#sketch-container");
 
-    let opac = 1;
-function reduceOpacity() {
-    opac -= 0.1;
-}
+
 
 function darkenPixels() {
     const pixels = document.querySelectorAll(".pixel");
     pixels.forEach( (pixel) => {
-        pixel.addEventListener("mouseover", () => {
-            if (!pixel.style.opacity) pixel.style.opacity = '1';
-            opacity = parseFloat(pixel.style.opacity);
-            pixel.style.opacity = opacity - 0.2;
-        });
+        pixel.removeEventListener("mouseover", blackPixelHandler); // Remove previous event listeners
+        pixel.removeEventListener("mouseover", colorPixelHandler);
+        pixel.removeEventListener("mouseover", darkenPixelHandler); // Ensure only one type of handler is active
+        pixel.addEventListener("mouseover", darkenPixelHandler);
     }
     );
 }
 
+function darkenPixelHandler(event) {
+    const pixel = event.target;
+    if (!pixel.style.opacity) pixel.style.opacity = '1';
+    let opacity = parseFloat(pixel.style.opacity);
+    pixel.style.opacity = opacity - 0.2;
+}
+
 function blackPixels() {
     const pixels = document.querySelectorAll(".pixel");
-    pixels.forEach( (pixel) => {
-        pixel.addEventListener("mouseover", () => {
-            pixel.setAttribute("style", "background: black");
-        });
-    }
-    );
+    pixels.forEach(pixel => {
+        pixel.removeEventListener("mouseover", darkenPixelHandler);
+        pixel.removeEventListener("mouseover", colorPixelHandler);
+        pixel.removeEventListener("mouseover", blackPixelHandler);
+        pixel.addEventListener("mouseover", blackPixelHandler);
+    });
+}
+
+function blackPixelHandler(event) {
+    const pixel = event.target;
+    pixel.style.background = 'black';
 }
 
 function colorPixels() {
     const pixels = document.querySelectorAll(".pixel");
     pixels.forEach( (pixel) => {
-        pixel.addEventListener("mouseover", () => {
-            pixel.setAttribute("style", "background: #" + ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6));
-        });
+        pixel.removeEventListener("mouseover", blackPixelHandler);
+        pixel.removeEventListener("mouseover", darkenPixelHandler);
+        pixel.removeEventListener("mouseover", colorPixelHandler);
+        pixel.addEventListener("mouseover", colorPixelHandler);
     }
     );
+}
+
+function colorPixelHandler(event) {
+    const pixel = event.target;
+    pixel.style.background = "#" + ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
 }
 
 function fillSquare(length) {
@@ -75,4 +89,9 @@ blackBtn.addEventListener("click", () => {
 const colorBtn = document.querySelector("#color-btn");
 colorBtn.addEventListener("click", () => {
     colorPixels();
+})
+
+const sketchBtn = document.querySelector("#sketch-btn");
+sketchBtn.addEventListener("click", () => {
+    darkenPixels();
 })
